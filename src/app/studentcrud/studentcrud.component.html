@@ -1,0 +1,50 @@
+
+<div class="container">
+    <div class="card">
+        <form>
+            <div class="form-group"> 
+          
+              <label >Name</label>
+              <input type="text" [(ngModel)]="stname" [ngModelOptions]="{standalone:true}" id="stname" class="form-control"  >
+            </div>
+            <div class="form-group">
+              <label>Course</label>
+              <input type="text" [(ngModel)]="course" [ngModelOptions]="{standalone:true}" class="form-control" id="course" >
+            </div>
+            <div class="form-group">
+              <label>Fee</label>
+              <input type="text" [(ngModel)]="fee" [ngModelOptions]="{standalone:true}" class="form-control" id="fee" >
+            </div>
+    
+            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+          </form>
+    </div>
+
+</div>
+<div class="container">
+    <h1>Student List</h1>
+    <table class="table">
+        <thead>
+            <h3 *ngIf="!isResultLoaded">Loading........</h3>
+                  <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Course</th>
+            <th scope="col">Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let StudentItem of StudentArray ;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{StudentItem.stname}}</td>
+            <td> {{StudentItem.course}} </td>
+            <td> {{StudentItem.fee}} </td>
+            <td>
+                <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Edit</button>
+                <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Delete</button>
+            </td>
+          </tr>
+       
+        </tbody>
+      </table>
+</div>
